@@ -59,6 +59,6 @@ public class OneThreeTwoPattern {
 
     public static void main(String[] args) {
         OneThreeTwoPattern o = new OneThreeTwoPattern();
-        System.out.println(o.find132patternBetter(new int[]{1,3,2,4,5,6,7,8,9,10}));
+        System.out.println(o.find132patternBetter(new int[]{1,93,95,97,100,8,6,4,2}));
     }
 }
