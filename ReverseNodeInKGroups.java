@@ -3,23 +3,6 @@ import java.util.Queue;
 
 // 25
 public class ReverseNodeInKGroups {
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
     public ListNode reverseKGroupBetter(ListNode head, int k) {
         ListNode prev = null;
         ListNode current = head;
