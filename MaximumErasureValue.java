@@ -23,7 +23,7 @@ public class MaximumErasureValue {
     }
 
     public int maximumUniqueSubarrayBetter(int[] nums) {
-        Set<Integer> set =  new HashSet();
+        Set<Integer> set =  new HashSet<>();
 
         int sum =0, ans =0;
         int j = 0;
