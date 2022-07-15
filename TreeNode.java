@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class TreeNode {
@@ -34,5 +36,24 @@ public class TreeNode {
             ptr++;
         }
         return root;
+    }
+
+    public static List<Integer> printTree(TreeNode n) {
+        List<Integer> res = new ArrayList<>();
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(n);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                var nn = q.poll();
+                if (nn == null) { res.add(null); continue; }
+                res.add(nn.val);
+                if (nn.left != null || nn.right != null) {
+                    q.add(nn.left);
+                    q.add(nn.right);
+                }
+            }
+        }
+        return res;
     }
 }
