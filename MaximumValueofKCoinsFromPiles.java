@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -72,6 +71,7 @@ public class MaximumValueofKCoinsFromPiles {
         l2.add(8);
         l2.add(9);
         MaximumValueofKCoinsFromPiles m = new MaximumValueofKCoinsFromPiles();
-        m.maxValueOfCoins(list, 2);
+        var s = m.new Solution();
+        s.maxValueOfCoins(list, 2);
     }
 }
