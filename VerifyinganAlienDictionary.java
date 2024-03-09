@@ -68,6 +68,64 @@ public class VerifyinganAlienDictionary {
         
     }
 
+    public static String getLargestNumber(String num) {
+        Character[] arr = new Character[num.length()];
+        arr[0] = num.charAt(0);
+        boolean even = (arr[0] - '0') % 2 == 0;
+        int start = 0;
+        List<int[]> ranges = new ArrayList<>();
+        for (int i = 1; i < arr.length; i++) {
+            arr[i] = num.charAt(i);
+            boolean tmp = (arr[i] - '0') % 2 == 0;
+            if (tmp != even) {
+                ranges.add(new int[] {start, i});
+                start = i;
+                even = tmp;
+            }
+        }
+
+        if (start != arr.length - 1)
+            ranges.add(new int[] {start, arr.length});
+
+        for (var r : ranges)
+            Arrays.sort(arr, r[0], r[1], (a,b) -> b - a);
+        
+        StringBuilder sb = new StringBuilder();
+        for (var c : arr)
+            sb.append(c);
+        return sb.toString();
+    }
+
+    static Map<String, Integer> m = new HashMap<>();
+    static String getKey(String str) {
+        char[] c = str.toCharArray();
+        Arrays.sort(c);
+        String ss = String.copyValueOf(c);
+        return ss;
+    }
+
+    public static List<Long> substitutions(List<String> words, List<String> phrases) {
+        List<Long> res = new ArrayList<>();
+        for (var s : words) {
+            m.compute(getKey(s), (k,v) -> {return v == null ? 1 : v + 1;});
+        }
+
+        for (var phrase : phrases) {
+            long combo = 0;
+            var ws = phrase.split(" ");
+            for (var w : ws) {
+                var key = getKey(w);
+                if (m.containsKey(key)) {
+                    var val = m.get(key);
+                    combo = combo == 0 ? val : combo * val;
+                }
+            }
+            res.add(combo);
+        }
+
+        return res;
+    }
+
     public static void main(String[] args) {
         VerifyinganAlienDictionary v = new VerifyinganAlienDictionary();
         System.out.print(v.isAlienSorted(new String[] {"apap", "app"}, "abcdefghijklmnopqrstuvwxyz"));
