@@ -25,6 +25,35 @@ public class ReverseLinkedListII {
         return h;
     }
 
+    public ListNode reverseBetweenNew(ListNode head, int left, int right) {
+        ListNode cur = head, ptr = head, h = head, s = head;
+        int i = 0;
+        while (ptr != null) {
+            i++;
+            if (i < left) {
+                ptr = ptr.next;
+                cur = cur.next;
+                h = h.next;
+                if (i != 1)
+                    s = s.next;
+                continue;
+            }
+            else if (i > right)
+                break;
+            var tmp = ptr.next;
+            ptr.next = cur;
+            cur = ptr;
+            ptr = tmp;
+        }
+        h.next = ptr;
+        if (s != h) {
+            s.next = cur;
+            return head;
+        }
+        else
+            return cur;
+    }
+
     public static void main(String[] args) {
         ReverseLinkedListII r = new ReverseLinkedListII();
         ListNode ll = new ListNode(5);
