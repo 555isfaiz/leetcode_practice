@@ -39,10 +39,6 @@ public class LongestConsecutiveSequence {
                 map.put(n - left, sum);
                 map.put(n + right, sum);
             }
-            else {
-                // duplicates
-                continue;
-            }
         }
         return res;
     }

@@ -2,6 +2,24 @@ import java.util.*;
 
 // 236
 public class LowestCommonAncestorofaBinaryTree {
+    public TreeNode lowestCommonAncestorNew(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null)
+            return null;
+        if (root == p)
+            return p;
+        if (root == q)
+            return q;
+        var ln = lowestCommonAncestor(root.left, p, q);
+        var rn = lowestCommonAncestor(root.right, p, q);
+        if (ln != null && rn != null) {
+            return root;
+        } else if (ln == null) {
+            return rn;
+        } else {
+            return ln;
+        }
+    }
+
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         Map<TreeNode, TreeNode> parent = new HashMap<>();
         Queue<TreeNode> queue = new LinkedList<>();
